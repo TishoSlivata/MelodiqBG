@@ -1,0 +1,60 @@
+﻿@model MelodiaBG.Models.ViewModels.InstrumentCreateViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white text-center">
+                    <h4>Създай нов продукт</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Product" asp-action="Create" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Име</label>
+                            <input asp-for="Name" class="form-control">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Описание</label>
+                            <textarea asp-for="Description" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Price" class="form-label">Цена</label>
+                            <input asp-for="Price" type="number" class="form-control" step="0.01">
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+
+                        <label asp-for="CategoryId" class="form-label">Категория</label>
+                        <select asp-for="CategoryId" class="form-control">
+                            <option value="">-- Изберете категория --</option>
+                            @if (ViewData["Categories"] is IEnumerable<Category> categories)
+                            {
+                                foreach (var item in categories)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+
+
+                        <div class="mb-3">
+                            <label asp-for="Image" class="form-label">Изображение</label>
+                            <input asp-for="Image" type="file" class="form-control">
+                            <span asp-validation-for="Image" class="text-danger"></span>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">Създай</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary">Назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Instrument>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<div class="container mt-4">
+    <!-- Title and Button Section -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Търсене на продукти</h2>
+    </div>
+
+    <!-- Search Bar Section -->
+    <div class="row mb-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="input-group">
+                <form asp-controller="Product" asp-action="Index" method="get" class="input-group">
+                    <input type="text" name="searchString" class="form-control" placeholder="Търсете продукт..." aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">
+                        <i class="bi bi-search"></i> Търси
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to Products Page -->
+    <div class="text-center">
+        <a href="@Url.Action("Index", "Product")" class="btn btn-success btn-lg">
+            <i class="bi bi-box"></i> Прегледайте всички продукти
+        </a>
+    </div>
+</div>

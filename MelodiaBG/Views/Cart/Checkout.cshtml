@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Плащане";
+}
+
+<h2>Плащане чрез Stripe</h2>
+
+<button id="checkout-button" class="btn btn-success">Плати със Stripe</button>
+
+<!-- Stripe JS -->
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    const stripe = Stripe("@ViewBag.StripePublicKey");
+
+    document.getElementById("checkout-button").addEventListener("click", function () {
+        fetch("/Stripe/CreateCheckoutSession", {
+            method: "POST"
+        })
+            .then(response => response.json())
+            .then(session => {
+                if (session.error) {
+                    alert(session.error);
+                } else {
+                    return stripe.redirectToCheckout({ sessionId: session.sessionId });
+                }
+            })
+            .catch(error => console.error("Грешка при зареждане на Stripe сесията:", error));
+    });
+</script>

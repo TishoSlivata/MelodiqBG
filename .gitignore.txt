@@ -1,0 +1,49 @@
+## Ignore Visual Studio temporary files, build results, and
+## user-specific files
+
+# Build results
+bin/
+obj/
+[Ll]og/
+*.log
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# IIS and web config stuff
+*.vspscc
+*.vssscc
+.vs/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Web config transform files
+*.publish.xml
+
+# Others
+*.dbmdl
+*.bak
+*.cache
+*.pdb
+*.tmp
+
+# Rider project files
+.idea/
+
+# Ignore appsettings (customized)
+appsettings.json
+appsettings.*.json
+
+# Environment secrets
+secrets.json
+
+# DotCover
+*.dotCover
+
+# Optional: node_modules or package lock if using npm in the project
+node_modules/
+package-lock.json
