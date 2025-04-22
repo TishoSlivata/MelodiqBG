@@ -66,6 +66,7 @@ namespace MelodiaBG.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult ProcessPayment()
         {
@@ -79,6 +80,7 @@ namespace MelodiaBG.Controllers
             return RedirectToAction("CreateCheckoutSession", "Stripe");
         }
 
+        [Authorize]
         public IActionResult Checkout()
         {
             var cart = GetCart();
